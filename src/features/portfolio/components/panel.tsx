@@ -21,7 +21,7 @@ function PanelHeader({ className, ...props }: React.ComponentProps<"header">) {
     <header
       data-slot="panel-header"
       className={cn(
-        "screen-line-bottom px-4 has-data-[slot=panel-description]:*:data-[slot=panel-title]:screen-line-bottom",
+        "screen-line-bottom flex min-h-12 items-center px-4 has-data-[slot=panel-description]:*:data-[slot=panel-title]:screen-line-bottom",
         className
       )}
       {...props}
@@ -39,7 +39,7 @@ function PanelTitle({
   return (
     <Comp
       data-slot="panel-title"
-      className={cn("text-3xl font-semibold tracking-tight", className)}
+      className={cn("text-2xl font-semibold tracking-tight", className)}
       {...props}
     />
   )

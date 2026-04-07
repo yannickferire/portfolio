@@ -20,7 +20,10 @@ export function Overview() {
       <h2 className="sr-only">Overview</h2>
 
       <PanelContent className="space-y-2.5">
-        <div className="mb-4 border border-dashed border-emerald-500/40 bg-emerald-500/5 px-3 py-2 text-center text-sm leading-none text-emerald-600 dark:text-emerald-400">
+        <div className="mb-4 rounded-lg border border-dashed ring-1 ring-line ring-offset-1 ring-offset-background border-emerald-500/40 bg-emerald-500/5 px-3 py-2 text-center text-sm leading-none text-emerald-600 dark:text-emerald-400">
+          <span className="relative mr-2.5 inline-block size-2 rounded-full bg-emerald-500">
+            <span className="absolute -inset-px animate-ping [animation-duration:2s] rounded-full bg-emerald-500 opacity-75" />
+          </span>
           <span className="font-medium">Open to new opportunities</span>
           <span className="text-emerald-600/60 dark:text-emerald-400/60">
             {" – Remote / Hybrid (Brussels – Liège – Namur)"}
@@ -67,7 +70,7 @@ export function Overview() {
                 href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(USER.address)}`}
                 aria-label={`Location: ${USER.address}`}
               >
-                Berloz,{" "}
+                Berloz, Belgium{" "}
                 <span className="inline-block size-4 overflow-hidden rounded-[2px] align-[-2px]">
                   <svg
                     className="size-full"
@@ -80,7 +83,6 @@ export function Overview() {
                     <rect x="600" width="300" height="600" fill="#ED2939" />
                   </svg>
                 </span>
-                {" Belgium"}
               </IntroItemLink>
             </IntroItemContent>
           </IntroItem>
