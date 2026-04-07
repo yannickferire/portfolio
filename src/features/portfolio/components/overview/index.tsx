@@ -1,17 +1,9 @@
-import {
-  LinkIcon,
-  MapPinIcon,
-  MarsIcon,
-  NonBinaryIcon,
-  VenusIcon,
-} from "lucide-react"
+import { LinkIcon, MapPinIcon } from "lucide-react"
 
 import { USER } from "@/features/portfolio/data/user"
-import type { User } from "@/features/portfolio/types/user"
 import { urlToName } from "@/utils/url"
 
 import { Panel, PanelContent } from "../panel"
-import { CurrentLocalTimeItem } from "./current-local-time-item"
 import { EmailItem } from "./email-item"
 import {
   IntroItem,
@@ -28,6 +20,13 @@ export function Overview() {
       <h2 className="sr-only">Overview</h2>
 
       <PanelContent className="space-y-2.5">
+        <div className="mb-4 border border-dashed border-emerald-500/40 bg-emerald-500/5 px-3 py-2 text-center text-sm leading-none text-emerald-600 dark:text-emerald-400">
+          <span className="font-medium">Open to new opportunities</span>
+          <span className="text-emerald-600/60 dark:text-emerald-400/60">
+            {" – Remote / Hybrid (Brussels – Liège – Namur)"}
+          </span>
+        </div>
+
         {USER.jobs.map((job, index) => {
           return (
             <JobItem
@@ -41,6 +40,24 @@ export function Overview() {
         })}
 
         <div className="grid gap-x-4 gap-y-2.5 sm:grid-cols-2">
+          <IntroItem>
+            <IntroItemIcon>
+              <LinkIcon />
+            </IntroItemIcon>
+            <IntroItemContent>
+              <IntroItemLink
+                href={USER.website}
+                aria-label={`Personal website: ${urlToName(USER.website)}`}
+              >
+                {urlToName(USER.website)}
+              </IntroItemLink>
+            </IntroItemContent>
+          </IntroItem>
+
+          <EmailItem email={USER.email} />
+
+          <PhoneItem phoneNumber={USER.phoneNumber} />
+
           <IntroItem>
             <IntroItemIcon>
               <MapPinIcon />
@@ -68,45 +85,8 @@ export function Overview() {
             </IntroItemContent>
           </IntroItem>
 
-          <CurrentLocalTimeItem timeZone={USER.timeZone} />
-
-          <PhoneItem phoneNumber={USER.phoneNumber} />
-
-          <EmailItem email={USER.email} />
-
-          <IntroItem>
-            <IntroItemIcon>
-              <LinkIcon />
-            </IntroItemIcon>
-            <IntroItemContent>
-              <IntroItemLink
-                href={USER.website}
-                aria-label={`Personal website: ${urlToName(USER.website)}`}
-              >
-                {urlToName(USER.website)}
-              </IntroItemLink>
-            </IntroItemContent>
-          </IntroItem>
-
-          <IntroItem>
-            <IntroItemIcon>{getGenderIcon(USER.gender)}</IntroItemIcon>
-            <IntroItemContent aria-label={`Pronouns: ${USER.pronouns}`}>
-              {USER.pronouns}
-            </IntroItemContent>
-          </IntroItem>
         </div>
       </PanelContent>
     </Panel>
   )
-}
-
-function getGenderIcon(gender: User["gender"]) {
-  switch (gender) {
-    case "male":
-      return <MarsIcon />
-    case "female":
-      return <VenusIcon />
-    case "non-binary":
-      return <NonBinaryIcon />
-  }
 }

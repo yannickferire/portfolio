@@ -17,6 +17,6 @@ export const SOCIAL_LINKS: SocialLink[] = [
     icon: "https://assets.chanhdai.com/images/link-icons/linkedin.webp?v=2",
     title: "LinkedIn",
     subtitle: "yannickferire",
-    href: "https://linkedin.com/in/yannickferire",
+    href: "https://www.linkedin.com/in/yannick-ferire-411b2abb/",
   },
 ]

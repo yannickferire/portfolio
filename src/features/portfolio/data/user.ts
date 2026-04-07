@@ -7,10 +7,12 @@ export const USER: User = {
   username: "yannickferire",
   gender: "male",
   pronouns: "he/him",
-  bio: "Creating with code. Small details matter.",
+  bio: "Fullstack Developer. UI obsessed, pixel perfect.",
   flipSentences: [
-    "Creating with code. Small details matter.",
-    "Developer",
+    "UI obsessed, pixel perfect",
+    "Strong UX knowledge",
+    "Product mindset oriented",
+    "Frontend at heart, fullstack when needed",
   ],
   address: "Berloz, Belgium",
   phoneNumber: "KzMyNDcwOTUwNTc5", // E.164 format, base64 encoded
