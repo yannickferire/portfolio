@@ -18,4 +18,6 @@ export type TechStack = {
   categories: string[]
   /** If true, use theme-specific icons for dark/light mode. */
   theme?: boolean
+  /** Group: "main" for main stack, "also" for also worked with. */
+  group: "main" | "also"
 }
