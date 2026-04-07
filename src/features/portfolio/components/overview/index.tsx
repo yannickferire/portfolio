@@ -1,0 +1,112 @@
+import {
+  LinkIcon,
+  MapPinIcon,
+  MarsIcon,
+  NonBinaryIcon,
+  VenusIcon,
+} from "lucide-react"
+
+import { USER } from "@/features/portfolio/data/user"
+import type { User } from "@/features/portfolio/types/user"
+import { urlToName } from "@/utils/url"
+
+import { Panel, PanelContent } from "../panel"
+import { CurrentLocalTimeItem } from "./current-local-time-item"
+import { EmailItem } from "./email-item"
+import {
+  IntroItem,
+  IntroItemContent,
+  IntroItemIcon,
+  IntroItemLink,
+} from "./intro-item"
+import { JobItem } from "./job-item"
+import { PhoneItem } from "./phone-item"
+
+export function Overview() {
+  return (
+    <Panel className="after:content-none">
+      <h2 className="sr-only">Overview</h2>
+
+      <PanelContent className="space-y-2.5">
+        {USER.jobs.map((job, index) => {
+          return (
+            <JobItem
+              key={index}
+              title={job.title}
+              company={job.company}
+              website={job.website}
+              experienceId={job.experienceId}
+            />
+          )
+        })}
+
+        <div className="grid gap-x-4 gap-y-2.5 sm:grid-cols-2">
+          <IntroItem>
+            <IntroItemIcon>
+              <MapPinIcon />
+            </IntroItemIcon>
+            <IntroItemContent>
+              <IntroItemLink
+                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(USER.address)}`}
+                aria-label={`Location: ${USER.address}`}
+              >
+                Berloz,{" "}
+                <span className="inline-block size-4 overflow-hidden rounded-[2px] align-[-2px]">
+                  <svg
+                    className="size-full"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 900 600"
+                    aria-hidden
+                  >
+                    <rect width="300" height="600" fill="#000" />
+                    <rect x="300" width="300" height="600" fill="#FAE042" />
+                    <rect x="600" width="300" height="600" fill="#ED2939" />
+                  </svg>
+                </span>
+                {" Belgium"}
+              </IntroItemLink>
+            </IntroItemContent>
+          </IntroItem>
+
+          <CurrentLocalTimeItem timeZone={USER.timeZone} />
+
+          <PhoneItem phoneNumber={USER.phoneNumber} />
+
+          <EmailItem email={USER.email} />
+
+          <IntroItem>
+            <IntroItemIcon>
+              <LinkIcon />
+            </IntroItemIcon>
+            <IntroItemContent>
+              <IntroItemLink
+                href={USER.website}
+                aria-label={`Personal website: ${urlToName(USER.website)}`}
+              >
+                {urlToName(USER.website)}
+              </IntroItemLink>
+            </IntroItemContent>
+          </IntroItem>
+
+          <IntroItem>
+            <IntroItemIcon>{getGenderIcon(USER.gender)}</IntroItemIcon>
+            <IntroItemContent aria-label={`Pronouns: ${USER.pronouns}`}>
+              {USER.pronouns}
+            </IntroItemContent>
+          </IntroItem>
+        </div>
+      </PanelContent>
+    </Panel>
+  )
+}
+
+function getGenderIcon(gender: User["gender"]) {
+  switch (gender) {
+    case "male":
+      return <MarsIcon />
+    case "female":
+      return <VenusIcon />
+    case "non-binary":
+      return <NonBinaryIcon />
+  }
+}
