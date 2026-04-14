@@ -36,7 +36,24 @@ export function ProjectItem({
   return (
     <Collapsible className={className} defaultOpen={project.isExpanded}>
       <div className="flex items-center hover:bg-accent-muted">
-        {project.logo ? (
+        {project.image ? (
+          <a
+            href={addQueryParams(project.link, UTM_PARAMS)}
+            target="_blank"
+            rel="noopener"
+            className="shrink-0"
+          >
+            <Image
+              src={project.image}
+              alt={project.title}
+              width={120}
+              height={120}
+              quality={100}
+              className="aspect-[1200/630] w-48 object-cover select-none"
+              unoptimized
+            />
+          </a>
+        ) : project.logo ? (
           <Image
             src={project.logo}
             alt={project.title}
@@ -60,6 +77,9 @@ export function ProjectItem({
                 {project.title}
               </h3>
 
+              {project.role && (
+                <p className="mb-0.5 text-sm text-muted-foreground">{project.role}</p>
+              )}
               <dl className="text-sm text-muted-foreground">
                 <dt className="sr-only">Period</dt>
                 <dd className="flex items-center gap-0.5">

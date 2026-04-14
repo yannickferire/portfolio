@@ -16,10 +16,14 @@ export type Project = {
   link: string
   /** Tags/technologies for chips or filtering. */
   skills: string[]
+  /** Role played in the project. */
+  role?: string
   /** Optional rich description; Markdown and line breaks supported. */
   description?: string
   /** Logo image URL (absolute or path under /public). */
   logo?: string
+  /** Preview/OG image URL. */
+  image?: string
   /** Whether the project card is expanded by default in the UI. */
   isExpanded?: boolean
 }

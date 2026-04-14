@@ -1,6 +1,7 @@
 import { LinkIcon, MapPinIcon } from "lucide-react"
 
 import { USER } from "@/features/portfolio/data/user"
+import { Twemoji } from "@/registry/components/twemoji/twemoji"
 import { urlToName } from "@/utils/url"
 
 import { Panel, PanelContent } from "../panel"
@@ -71,18 +72,7 @@ export function Overview() {
                 aria-label={`Location: ${USER.address}`}
               >
                 Berloz, Belgium{" "}
-                <span className="inline-block size-4 overflow-hidden rounded-[2px] align-[-2px]">
-                  <svg
-                    className="size-full"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 900 600"
-                    aria-hidden
-                  >
-                    <rect width="300" height="600" fill="#000" />
-                    <rect x="300" width="300" height="600" fill="#FAE042" />
-                    <rect x="600" width="300" height="600" fill="#ED2939" />
-                  </svg>
-                </span>
+                <Twemoji className="inline-block size-5 align-[-4px]">🇧🇪</Twemoji>
               </IntroItemLink>
             </IntroItemContent>
           </IntroItem>

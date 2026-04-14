@@ -1,5 +1,10 @@
 import type { User } from "@/features/portfolio/types/user"
 
+const careerStartDate = new Date(2013, 8) // September 2013
+const yearsOfExperience = Math.floor(
+  (Date.now() - careerStartDate.getTime()) / (365.25 * 24 * 60 * 60 * 1000)
+)
+
 export const USER: User = {
   firstName: "Yannick",
   lastName: "Ferire",
@@ -21,7 +26,7 @@ export const USER: User = {
   jobTitle: "Developer",
   jobs: [],
   about: `
-- **Senior Front-end Developer** with 12+ years of experience, dedicated to the same company.
+- **Senior Front-end Developer** with ${yearsOfExperience}+ years of experience, dedicated to the same company.
 - Skilled in **Next.js**, **React**, **TypeScript**, and modern front-end technologies; building high-quality, user-centric web applications.
 - Sole front-end developer for the past 6 years, owning the full UI layer end-to-end while collaborating closely with designers, back-end engineers, and product stakeholders.
 - A truly **versatile profile**: UI, UX, product thinking, front-end, back-end. I've touched it all. This gives me a deep understanding of every role around the table and makes me a strong team player.

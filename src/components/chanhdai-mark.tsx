@@ -1,28 +1,21 @@
-export function ChanhDaiMark(props: React.ComponentProps<"svg">) {
+import { cn } from "@/lib/utils"
+
+export function ChanhDaiMark({
+  className,
+  short = false,
+  ...props
+}: React.ComponentProps<"span"> & { short?: boolean }) {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 512 256"
-      aria-hidden
+    <span
+      style={{ fontFamily: "var(--font-handwritten)" }}
+      className={cn("text-4xl leading-none", className)}
       {...props}
     >
-      <text
-        x="256"
-        y="204"
-        fill="currentColor"
-        fontFamily="var(--font-geist-sans), Geist, ui-sans-serif, system-ui, sans-serif"
-        fontSize="240"
-        fontWeight="700"
-        textAnchor="middle"
-        letterSpacing="-12"
-      >
-        YF
-      </text>
-    </svg>
+      {short ? "YF" : "Yannick Ferire"}
+    </span>
   )
 }
 
 export function getMarkSVG(color: string) {
-  return `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 512 256"><text x="256" y="204" fill="${color}" font-family="Geist, ui-sans-serif, system-ui, sans-serif" font-size="240" font-weight="700" text-anchor="middle" letter-spacing="-12">YF</text></svg>`
+  return `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 512 256"><text x="256" y="200" fill="${color}" font-family="Homemade Apple, cursive" font-size="100" font-weight="400" text-anchor="middle">YF</text></svg>`
 }

@@ -16,20 +16,20 @@ export const META_THEME_COLORS = {
 
 export const MAIN_NAV: NavItem[] = [
   {
-    title: "Components",
-    href: "/components",
+    title: "About me",
+    href: "/#about",
   },
   {
-    title: "Blocks",
-    href: "/blocks",
+    title: "Stack",
+    href: "/#stack",
   },
   {
-    title: "Blog",
-    href: "/blog",
+    title: "Experience",
+    href: "/#experience",
   },
   {
-    title: "Sponsors",
-    href: "/sponsors",
+    title: "Projects",
+    href: "/#projects",
   },
 ]
 

@@ -17,17 +17,7 @@ export function ProfileHeader() {
       </div>
 
       <div className="flex flex-1 flex-col">
-        <div className="flex grow items-end pb-1 pl-4">
-          <div
-            className="line-clamp-1 font-mono text-xs text-border select-none max-sm:hidden"
-            aria-hidden
-          >
-            {"text-3xl "}
-            <span className="inline dark:hidden">text-zinc-950</span>
-            <span className="hidden dark:inline">text-zinc-50</span>
-            {" font-medium"}
-          </div>
-        </div>
+        <div className="flex grow items-end pb-1 pl-4" />
 
         <div className="border-t border-line">
           <div className="flex items-center gap-2 py-1.5 pl-4">

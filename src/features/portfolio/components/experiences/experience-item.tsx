@@ -45,6 +45,36 @@ export function ExperienceItem({ experience }: { experience: Experience }) {
           )}
         </h3>
 
+        {experience.positions.length > 1 && (() => {
+          const starts = experience.positions.map((p) => p.employmentPeriod.start)
+          const ends = experience.positions.map((p) => p.employmentPeriod.end)
+          const earliest = starts.sort()[0]
+          const hasOngoing = ends.some((e) => !e)
+          const latest = hasOngoing ? null : ends.filter(Boolean).sort().reverse()[0]
+
+          const parseDate = (d: string) => {
+            const parts = d.split(".")
+            if (parts.length === 2) return new Date(Number(parts[1]), Number(parts[0]) - 1)
+            return new Date(Number(parts[0]), 0)
+          }
+
+          const startDate = parseDate(earliest)
+          const endDate = latest ? parseDate(latest) : new Date()
+          const months = (endDate.getFullYear() - startDate.getFullYear()) * 12 + endDate.getMonth() - startDate.getMonth()
+          const years = Math.floor(months / 12)
+          const remainingMonths = months % 12
+
+          const duration = years > 0
+            ? remainingMonths > 0
+              ? `${years} yr${years > 1 ? "s" : ""} ${remainingMonths} mo${remainingMonths > 1 ? "s" : ""}`
+              : `${years} yr${years > 1 ? "s" : ""}`
+            : `${remainingMonths} mo${remainingMonths > 1 ? "s" : ""}`
+
+          return (
+            <span className="text-sm text-muted-foreground">{duration}</span>
+          )
+        })()}
+
         {experience.isCurrentEmployer && (
           <span className="relative flex items-center justify-center">
             <span className="absolute inline-flex size-3 animate-ping rounded-full bg-info opacity-50" />

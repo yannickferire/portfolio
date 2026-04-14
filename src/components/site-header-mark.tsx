@@ -44,12 +44,15 @@ function ChanhDaiMarkMotion() {
     <div
       data-visible={visible}
       className={cn(
-        "group/mark-motion relative flex data-[visible=true]:before:opacity-0",
+        "group/mark-motion relative flex px-2 py-1.5 data-[visible=true]:before:opacity-0",
         "before:absolute before:inset-0 before:rounded-lg before:border before:border-dashed before:border-line",
         "before:transition-opacity before:duration-500"
       )}
     >
-      <ChanhDaiMark className="-translate-y-1 opacity-0 transition-[opacity,translate] duration-300 group-data-[visible=true]/mark-motion:translate-y-0 group-data-[visible=true]/mark-motion:opacity-100" />
+      <ChanhDaiMark short className={cn(
+        "!text-2xl -translate-y-1 opacity-0 transition-[opacity,translate] duration-300",
+        "group-data-[visible=true]/mark-motion:translate-y-0 group-data-[visible=true]/mark-motion:opacity-80"
+      )} />
     </div>
   )
 }
@@ -57,5 +60,5 @@ function ChanhDaiMarkMotion() {
 export function SiteHeaderMark() {
   const pathname = usePathname()
   const isHome = ["/", "/index"].includes(pathname)
-  return isHome ? <ChanhDaiMarkMotion /> : <ChanhDaiMark />
+  return isHome ? <ChanhDaiMarkMotion /> : <ChanhDaiMark short className="!text-2xl opacity-80" />
 }

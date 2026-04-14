@@ -1,4 +1,8 @@
 @import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
 @import "tw-animate-css";
 @import "./scroll-fade-effect.css";
 
