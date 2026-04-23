@@ -19,7 +19,7 @@ import {
 } from "@hugeicons/core-free-icons"
 
 function createIcon(iconData: typeof ArrowRight01, displayName: string) {
-  const Icon = ({ size = 18, ...props }: React.ComponentProps<typeof HugeiconsIcon>) => (
+  const Icon = ({ size = 18, ...props }: Omit<React.ComponentProps<typeof HugeiconsIcon>, "icon">) => (
     <HugeiconsIcon icon={iconData} size={size} {...props} />
   )
   Icon.displayName = displayName
@@ -43,3 +43,12 @@ export const MailIcon = createIcon(Mail01, "MailIcon")
 export const MapPinIcon = createIcon(Location01, "MapPinIcon")
 export const PhoneIcon = createIcon(Call02, "PhoneIcon")
 export const XIcon = createIcon(Cancel01, "XIcon")
+
+// Re-export legacy icons from brand-icons for backward compatibility
+export {
+  ComponentIcon,
+  Icons,
+  getIcon,
+  getIconForLanguageExtension,
+  getIconForPackageManager,
+} from "@/components/brand-icons"

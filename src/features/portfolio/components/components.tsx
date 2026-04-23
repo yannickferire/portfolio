@@ -6,7 +6,7 @@ import {
   ComponentItemDot,
   ComponentItemIcon,
   ComponentItemTitle,
-} from "@/app/(app)/(docs)/components/components/component-item"
+} from "@/app/[locale]/(app)/(docs)/components/components/component-item"
 import { Button } from "@/components/base/ui/button"
 import { ComponentIcon } from "@/components/icons"
 import { getDocsByCategory } from "@/features/doc/data/documents"
