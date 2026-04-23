@@ -1,8 +1,12 @@
+"use client"
+
 import { USER } from "@/features/portfolio/data/user"
+import { useLocale } from "@/i18n/context"
 import { TextFlip } from "@/registry/components/text-flip"
 
-
 export function ProfileHeader() {
+  const { t } = useLocale()
+
   return (
     <div className="screen-line-bottom flex border-x border-line">
       <div className="shrink-0 border-r border-line">
@@ -28,7 +32,7 @@ export function ProfileHeader() {
 
           <div className="h-12 translate-y-[0.5px] border-t border-line py-0.5 pl-4 sm:h-8">
             <span className="font-pixel-square text-sm text-muted-foreground">
-              Fullstack Developer –{" "}
+              {t.profile.role}{" "}
             </span>
             <TextFlip
               className="inline font-pixel-square text-sm text-balance text-muted-foreground"
@@ -39,7 +43,7 @@ export function ProfileHeader() {
               }}
               interval={4}
             >
-              {USER.flipSentences}
+              {[...t.profile.flipSentences]}
             </TextFlip>
           </div>
         </div>

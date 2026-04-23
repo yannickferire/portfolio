@@ -10,12 +10,26 @@ import { Projects } from "@/features/portfolio/components/projects"
 import { SocialLinks } from "@/features/portfolio/components/social-links"
 import { TechStack } from "@/features/portfolio/components/tech-stack"
 import { USER } from "@/features/portfolio/data/user"
+import { isValidLocale } from "@/i18n"
 import { cn } from "@/lib/utils"
 
-export const metadata: Metadata = {
-  alternates: {
-    canonical: "/",
-  },
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}): Promise<Metadata> {
+  const { locale } = await params
+  const validLocale = isValidLocale(locale) ? locale : "en"
+
+  return {
+    alternates: {
+      canonical: `/${validLocale}`,
+      languages: {
+        en: "/en",
+        fr: "/fr",
+      },
+    },
+  }
 }
 
 export default function Page() {

@@ -2,40 +2,14 @@ import "@/styles/globals.css"
 
 import { GoogleTagManager } from "@next/third-parties/google"
 import type { Metadata, Viewport } from "next"
-import Script from "next/script"
 import { NuqsAdapter } from "nuqs/adapters/next/app"
-import type { WebSite, WithContext } from "schema-dts"
 
+import { DarkModeScript } from "@/components/dark-mode-script"
 import { DuckFollower } from "@/components/duck-follower"
 import { Providers } from "@/components/providers"
 import { META_THEME_COLORS, SITE_INFO, X_USERNAME } from "@/config/site"
 import { USER } from "@/features/portfolio/data/user"
 import { fontVariables } from "@/lib/fonts"
-
-function getWebSiteJsonLd(): WithContext<WebSite> {
-  return {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    name: SITE_INFO.name,
-    url: SITE_INFO.url,
-    alternateName: [USER.username],
-  }
-}
-
-// Thanks @shadcn-ui, @tailwindcss
-const darkModeScript = String.raw`
-  try {
-    if (localStorage.theme === 'dark' || ((!('theme' in localStorage) || localStorage.theme === 'system') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      document.querySelector('meta[name="theme-color"]').setAttribute('content', '${META_THEME_COLORS.dark}')
-    }
-  } catch (_) {}
-
-  try {
-    if (/(Mac|iPhone|iPod|iPad)/i.test(navigator.platform)) {
-      document.documentElement.classList.add('os-macos')
-    }
-  } catch (_) {}
-`
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_INFO.url),
@@ -45,18 +19,12 @@ export const metadata: Metadata = {
   },
   description: SITE_INFO.description,
   keywords: SITE_INFO.keywords,
-  authors: [
-    {
-      name: "ncdai",
-      url: SITE_INFO.url,
-    },
-  ],
-  creator: "ncdai",
+  authors: [{ name: USER.displayName, url: SITE_INFO.url }],
+  creator: USER.displayName,
   openGraph: {
     siteName: SITE_INFO.name,
     url: "/",
     type: "profile",
-    locale: "en_US",
     firstName: USER.firstName,
     lastName: USER.lastName,
     username: USER.username,
@@ -78,20 +46,11 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      {
-        url: "https://assets.chanhdai.com/images/favicon.ico",
-        sizes: "any",
-      },
-      {
-        url: "https://assets.chanhdai.com/images/favicon.svg",
-        type: "image/svg+xml",
-      },
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
     ],
-    apple: {
-      url: "https://assets.chanhdai.com/images/apple-touch-icon.png",
-      type: "image/png",
-      sizes: "180x180",
-    },
+    apple: { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
   },
 }
 
@@ -108,30 +67,15 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={fontVariables} suppressHydrationWarning>
-      <head>
-        <script
-          type="text/javascript"
-          dangerouslySetInnerHTML={{ __html: darkModeScript }}
-        />
-        {/*
-          Thanks @tailwindcss. We inject the script via the `<Script/>` tag again,
-          since we found the regular `<script>` tag to not execute when rendering a not-found page.
-         */}
-        <Script src={`data:text/javascript;base64,${btoa(darkModeScript)}`} />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(getWebSiteJsonLd()).replace(/</g, "\\u003c"),
-          }}
-        />
-      </head>
+    <html lang="en" className={fontVariables} data-scroll-behavior="smooth" suppressHydrationWarning>
+      <head />
 
       {process.env.NEXT_PUBLIC_GTM_ID && (
         <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
       )}
 
       <body>
+        <DarkModeScript />
         <Providers>
           <NuqsAdapter>
             {children}

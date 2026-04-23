@@ -17,7 +17,7 @@ import {
   TabsTrigger,
 } from "./base/ui/tabs"
 import { CopyButton } from "./copy-button"
-import { getIconForPackageManager } from "./icons"
+import { getIconForPackageManager } from "./brand-icons"
 
 const pmCommands = {
   pnpm: "pnpm dlx",

@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils"
 
-export function ChanhDaiMark({
+export function LogoMark({
   className,
   short = false,
   ...props

@@ -1,6 +1,6 @@
 "use client"
 
-import { MailIcon } from "lucide-react"
+import { MailIcon } from "@/components/icons"
 import { useHotkeys } from "react-hotkeys-hook"
 import { toast } from "sonner"
 import { useWebHaptics } from "web-haptics/react"

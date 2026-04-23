@@ -4,9 +4,11 @@ import dynamic from "next/dynamic"
 import Link from "next/link"
 
 import { DesktopNav } from "@/components/desktop-nav"
+import { LocaleSwitcher } from "@/components/locale-switcher"
 import { SiteHeaderMark } from "@/components/site-header-mark"
 import { ThemeToggle } from "@/components/theme-toggle"
-import { MAIN_NAV, MOBILE_NAV } from "@/config/site"
+import { useLocale } from "@/i18n/context"
+import type { NavItem } from "@/types/nav"
 
 const BrandContextMenu = dynamic(() =>
   import("@/components/brand-context-menu").then((mod) => mod.BrandContextMenu)
@@ -17,6 +19,20 @@ const MobileNav = dynamic(() =>
 )
 
 export function SiteHeader() {
+  const { locale, t } = useLocale()
+
+  const mainNav: NavItem[] = [
+    { title: t.nav.aboutMe, href: `/${locale}#about` },
+    { title: t.nav.stack, href: `/${locale}#stack` },
+    { title: t.nav.experience, href: `/${locale}#experience` },
+    { title: t.nav.projects, href: `/${locale}#projects` },
+  ]
+
+  const mobileNav: NavItem[] = [
+    { title: t.nav.home, href: `/${locale}` },
+    ...mainNav,
+  ]
+
   return (
     <>
       <header className="sticky top-0 z-50 max-w-screen overflow-x-hidden bg-background/80 px-2 pt-2 backdrop-blur-lg">
@@ -24,10 +40,11 @@ export function SiteHeader() {
           <BrandContextMenu>
             <Link
               className="transition-[scale] ease-out active:scale-[0.98] has-data-[visible=false]:pointer-events-none"
-              href="/"
-              aria-label="Home"
+              href={`/${locale}`}
+              aria-label={t.nav.home}
               onClick={(e) => {
-                if (window.location.pathname === "/") {
+                const homePath = `/${locale}`
+                if (window.location.pathname === homePath) {
                   e.preventDefault()
                   window.scrollTo({ top: 0, behavior: "smooth" })
                 }
@@ -39,9 +56,10 @@ export function SiteHeader() {
 
           <div className="flex-1" />
 
-          <DesktopNav items={MAIN_NAV} />
+          <DesktopNav items={mainNav} />
 
-          <div className="flex items-center">
+          <div className="flex flex-1 items-center justify-end gap-1">
+            <LocaleSwitcher />
             <ThemeToggle />
           </div>
 
@@ -53,7 +71,7 @@ export function SiteHeader() {
       {/* Mobile Nav */}
       <div className="pointer-events-none fixed inset-x-0 bottom-0 z-50 h-[calc(--spacing(16)+env(safe-area-inset-bottom,0px))] bg-linear-to-t from-background from-[calc(env(safe-area-inset-bottom,0%))] to-transparent sm:hidden" />
       <div className="fixed bottom-[calc(--spacing(2)+env(safe-area-inset-bottom,0px))] left-1/2 z-50 flex w-fit -translate-x-1/2 items-center rounded-xl bg-popover py-1 pr-1 pl-2.5 shadow-md ring ring-foreground/10 sm:hidden dark:ring-foreground/20">
-        <MobileNav items={MOBILE_NAV} />
+        <MobileNav items={mobileNav} />
       </div>
     </>
   )

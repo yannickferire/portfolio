@@ -14,7 +14,7 @@ import { usePackageManager } from "@/hooks/use-package-manager"
 import type { NpmCommands } from "@/types/unist"
 
 import { CopyButton } from "./copy-button"
-import { getIconForPackageManager } from "./icons"
+import { getIconForPackageManager } from "./brand-icons"
 
 export function CodeBlockCommand({
   __pnpm__,

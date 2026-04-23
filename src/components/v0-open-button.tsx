@@ -3,7 +3,7 @@ import type { ComponentProps } from "react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 
-import { Icons } from "./icons"
+import { Icons } from "./brand-icons"
 
 export function OpenInV0Button({
   url,

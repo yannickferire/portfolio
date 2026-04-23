@@ -2,7 +2,7 @@
 
 import { useRef } from "react"
 
-import { ChanhDaiMark } from "@/components/chanhdai-mark"
+import { LogoMark } from "@/components/logo-mark"
 import { Magnet } from "@/components/react-bits/magnet"
 import { cn } from "@/lib/utils"
 
@@ -20,7 +20,7 @@ export function ProfileCover() {
       )}
     >
       <Magnet containerRef={containerRef} magnetStrength={6}>
-        <ChanhDaiMark id="js-cover-mark" className="opacity-60" />
+        <LogoMark id="js-cover-mark" className="opacity-60" />
       </Magnet>
     </div>
   )

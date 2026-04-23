@@ -18,13 +18,6 @@ export const TECH_STACK: TechStack[] = [
     group: "main",
   },
   {
-    key: "js",
-    title: "JavaScript",
-    href: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
-    categories: ["Language"],
-    group: "main",
-  },
-  {
     key: "react",
     title: "React",
     href: "https://react.dev/",
@@ -51,13 +44,6 @@ export const TECH_STACK: TechStack[] = [
     title: "Motion",
     href: "https://motion.dev/",
     categories: ["Library", "Animation"],
-    group: "main",
-  },
-  {
-    key: "laravel",
-    title: "Laravel",
-    href: "https://laravel.com/",
-    categories: ["Framework"],
     group: "main",
   },
   {
@@ -134,6 +120,13 @@ export const TECH_STACK: TechStack[] = [
   },
 
   // Also worked with
+  {
+    key: "laravel",
+    title: "Laravel",
+    href: "https://laravel.com/",
+    categories: ["Framework"],
+    group: "also",
+  },
   {
     key: "vuejs",
     title: "Vue.js",

@@ -1,4 +1,4 @@
-import { CodeXmlIcon, GraduationCapIcon } from "lucide-react"
+import { CodeXmlIcon, GraduationCapIcon } from "@/components/icons"
 
 import type { Experience } from "../types/experiences"
 
@@ -9,7 +9,7 @@ export const EXPERIENCES: Experience[] = [
     companyWebsite: "https://bureau347.com",
     positions: [
       {
-        id: "2",
+        id: "lead",
         title: "Lead Front-end Developer",
         employmentPeriod: {
           start: "09.2018",
@@ -30,7 +30,7 @@ export const EXPERIENCES: Experience[] = [
         isExpanded: true,
       },
       {
-        id: "1",
+        id: "frontend",
         title: "Front-end Developer",
         employmentPeriod: {
           start: "04.2014",
@@ -48,7 +48,7 @@ export const EXPERIENCES: Experience[] = [
     companyName: "Freelance",
     positions: [
       {
-        id: "1",
+        id: "freelance",
         title: "Front-end Developer",
         employmentPeriod: {
           start: "09.2013",
@@ -62,11 +62,11 @@ export const EXPERIENCES: Experience[] = [
     ],
   },
   {
-    id: "cellule-verte",
+    id: "celluleVerte",
     companyName: "Cellule Verte",
     positions: [
       {
-        id: "1",
+        id: "celluleVerte",
         title: "Front-end Developer (Internship)",
         employmentPeriod: {
           start: "10.2012",
@@ -83,7 +83,7 @@ export const EXPERIENCES: Experience[] = [
     companyName: "Education",
     positions: [
       {
-        id: "1",
+        id: "education",
         title: "Haute Ecole Albert Jacquard",
         employmentPeriod: {
           start: "2010",

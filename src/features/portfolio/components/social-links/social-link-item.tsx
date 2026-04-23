@@ -1,4 +1,4 @@
-import { ArrowUpRightIcon } from "lucide-react"
+import { ArrowUpRightIcon } from "@/components/icons"
 import Image from "next/image"
 
 import { UTM_PARAMS } from "@/config/site"

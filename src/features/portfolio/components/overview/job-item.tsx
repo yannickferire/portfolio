@@ -1,4 +1,4 @@
-import { BriefcaseBusinessIcon, CodeXmlIcon, LightbulbIcon } from "lucide-react"
+import { BriefcaseBusinessIcon, CodeXmlIcon, LightbulbIcon } from "@/components/icons"
 
 import { UTM_PARAMS } from "@/config/site"
 import { addQueryParams } from "@/utils/url"

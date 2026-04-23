@@ -1,11 +1,12 @@
 "use client"
 
-import { PhoneIcon } from "lucide-react"
+import { PhoneIcon } from "@/components/icons"
 import { useHotkeys } from "react-hotkeys-hook"
 import { toast } from "sonner"
 import { useWebHaptics } from "web-haptics/react"
 
 import { useIsClient } from "@/hooks/use-is-client"
+import { useLocale } from "@/i18n/context"
 import { trackEvent } from "@/lib/events"
 import { CopyButton } from "@/registry/components/copy-button"
 import { copyToClipboardWithEvent } from "@/utils/copy"
@@ -23,6 +24,7 @@ type PhoneItemProps = {
 }
 
 export function PhoneItem({ phoneNumber }: PhoneItemProps) {
+  const { t } = useLocale()
   const isClient = useIsClient()
   const phoneNumberDecoded = decodePhoneNumber(phoneNumber)
   const phoneNumberFormatted = formatPhoneNumber(phoneNumberDecoded)
@@ -59,7 +61,7 @@ export function PhoneItem({ phoneNumber }: PhoneItemProps) {
               {" 470 95 05 79"}
             </>
           ) : (
-            "[Phone protected]"
+            t.overview.phoneProtected
           )}
         </IntroItemLink>
       </IntroItemContent>
@@ -69,7 +71,7 @@ export function PhoneItem({ phoneNumber }: PhoneItemProps) {
           className="rounded-md border-none text-muted-foreground [&_svg:not([class*='size-'])]:size-3.5"
           variant="ghost"
           size="icon-xs"
-          text={isClient ? phoneNumberDecoded : "[Phone protected]"}
+          text={isClient ? phoneNumberDecoded : t.overview.phoneProtected}
           onCopySuccess={() => {
             trigger("success")
             trackEvent({

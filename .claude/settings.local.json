@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pnpm check-types *)",
+      "Bash(npx tsc *)",
+      "Bash(curl -sO \"https://assets.chanhdai.com/images/link-icons/x.webp\")",
+      "Bash(curl -sO \"https://assets.chanhdai.com/images/link-icons/github.webp\")",
+      "Bash(curl -sO \"https://assets.chanhdai.com/images/link-icons/linkedin.webp\")",
+      "Bash(curl -sL \"https://assets.chanhdai.com/images/sprites/duck.webp?v=2\" -o /Users/yannickferire/Desktop/Projets/portfolio/public/images/duck.webp)",
+      "Bash(grep -iE \"^Phone|^GraduationCap|^Package0|^ChevronDown|^SourceCode|^Xml|^Box$\")",
+      "Bash(grep -iE \"^GraduationCap|^ChevronDown|^SourceCode|^Xml|^CodeCircle|^Code$|^CodeSquare\")",
+      "Bash(node -e ' *)",
+      "Bash(ls /Users/yannickferire/Desktop/Projets/portfolio/public/favicon* /Users/yannickferire/Desktop/Projets/portfolio/public/apple-touch-icon*)"
+    ]
+  }
+}

@@ -1,11 +1,17 @@
+"use client"
+
+import { useLocale } from "@/i18n/context"
+
 import { SOCIAL_LINKS } from "../../data/social-links"
 import { Panel } from "../panel"
 import { SocialLinkItem } from "./social-link-item"
 
 export function SocialLinks() {
+  const { t } = useLocale()
+
   return (
     <Panel className="before:content-none after:content-none">
-      <h2 className="sr-only">Social Links</h2>
+      <h2 className="sr-only">{t.social.title}</h2>
 
       <div className="relative">
         <div className="pointer-events-none absolute inset-0 -z-1 grid grid-cols-2 gap-2 md:grid-cols-3">

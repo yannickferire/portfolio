@@ -74,20 +74,20 @@ const SunMediumIcon = forwardRef<SunMediumIconHandle, SunMediumIconProps>(
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
-          strokeWidth="2"
+          strokeWidth="1.5"
           strokeLinecap="round"
           strokeLinejoin="round"
         >
-          <circle cx="12" cy="12" r="4" />
+          <path d="M17 12C17 14.7614 14.7614 17 12 17C9.23858 17 7 14.7614 7 12C7 9.23858 9.23858 7 12 7C14.7614 7 17 9.23858 17 12Z" />
           {[
-            "M12 3v1",
-            "M12 20v1",
-            "M3 12h1",
-            "M20 12h1",
-            "m18.364 5.636-.707.707",
-            "m6.343 17.657-.707.707",
-            "m5.636 5.636.707.707",
-            "m17.657 17.657.707.707",
+            "M12 2V3.5",
+            "M12 20.5V22",
+            "M3.5 12H2",
+            "M20.5 12H22",
+            "M19.0708 19.0713L18.0101 18.0106",
+            "M5.98926 5.98926L4.9286 4.9286",
+            "M19.0713 4.92871L18.0106 5.98937",
+            "M5.98975 18.0107L4.92909 19.0714",
           ].map((d, index) => (
             <motion.path
               key={d}

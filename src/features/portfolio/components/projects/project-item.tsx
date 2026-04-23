@@ -1,3 +1,5 @@
+"use client"
+
 import { BoxIcon, InfinityIcon, LinkIcon } from "lucide-react"
 import Image from "next/image"
 
@@ -14,10 +16,11 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/base/ui/tooltip"
-import { Markdown } from "@/components/markdown"
+import { MarkdownClient } from "@/components/markdown-client"
 import { Tag } from "@/components/ui/tag"
 import { ProseMono } from "@/components/ui/typography"
 import { UTM_PARAMS } from "@/config/site"
+import { useLocale } from "@/i18n/context"
 import { addQueryParams } from "@/utils/url"
 
 import type { Project } from "../../types/projects"
@@ -29,9 +32,19 @@ export function ProjectItem({
   className?: string
   project: Project
 }) {
+  const { t } = useLocale()
   const { start, end } = project.period
   const isOngoing = !end
   const isSinglePeriod = end === start
+
+  // Pick translated description and role based on project id
+  const projectsData = t.projectsData as Record<
+    string,
+    { description?: string; role?: string }
+  >
+  const translatedData = projectsData[project.id] || {}
+  const description = translatedData.description || project.description
+  const role = translatedData.role || project.role
 
   return (
     <Collapsible className={className} defaultOpen={project.isExpanded}>
@@ -77,11 +90,11 @@ export function ProjectItem({
                 {project.title}
               </h3>
 
-              {project.role && (
-                <p className="mb-0.5 text-sm text-muted-foreground">{project.role}</p>
+              {role && (
+                <p className="mb-0.5 text-sm text-muted-foreground">{role}</p>
               )}
               <dl className="text-sm text-muted-foreground">
-                <dt className="sr-only">Period</dt>
+                <dt className="sr-only">{t.projects.period}</dt>
                 <dd className="flex items-center gap-0.5">
                   <span>{start}</span>
                   {!isSinglePeriod && (
@@ -90,7 +103,7 @@ export function ProjectItem({
                       {isOngoing ? (
                         <>
                           <InfinityIcon className="size-4.5 translate-y-[0.5px]" />
-                          <span className="sr-only">Present</span>
+                          <span className="sr-only">{t.projects.present}</span>
                         </>
                       ) : (
                         <span>{end}</span>
@@ -111,12 +124,12 @@ export function ProjectItem({
                     rel="noopener"
                   >
                     <LinkIcon className="pointer-events-none size-4" />
-                    <span className="sr-only">Open Project Link</span>
+                    <span className="sr-only">{t.projects.openLink}</span>
                   </a>
                 }
               />
               <TooltipContent>
-                <p>Open Project Link</p>
+                <p>{t.projects.openLink}</p>
               </TooltipContent>
             </Tooltip>
 
@@ -129,9 +142,9 @@ export function ProjectItem({
 
       <CollapsibleContent className="overflow-hidden">
         <div className="space-y-4 border-t border-line p-4">
-          {project.description && (
+          {description && (
             <ProseMono>
-              <Markdown>{project.description}</Markdown>
+              <MarkdownClient>{description}</MarkdownClient>
             </ProseMono>
           )}
 

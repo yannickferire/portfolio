@@ -1,6 +1,9 @@
-import { LinkIcon, MapPinIcon } from "lucide-react"
+"use client"
+
+import { LinkIcon, MapPinIcon } from "@/components/icons"
 
 import { USER } from "@/features/portfolio/data/user"
+import { useLocale } from "@/i18n/context"
 import { Twemoji } from "@/registry/components/twemoji/twemoji"
 import { urlToName } from "@/utils/url"
 
@@ -16,18 +19,20 @@ import { JobItem } from "./job-item"
 import { PhoneItem } from "./phone-item"
 
 export function Overview() {
+  const { t } = useLocale()
+
   return (
     <Panel className="after:content-none">
-      <h2 className="sr-only">Overview</h2>
+      <h2 className="sr-only">{t.overview.title}</h2>
 
       <PanelContent className="space-y-2.5">
         <div className="mb-4 rounded-lg border border-dashed ring-1 ring-line ring-offset-1 ring-offset-background border-emerald-500/40 bg-emerald-500/5 px-3 py-2 text-center text-sm leading-none text-emerald-600 dark:text-emerald-400">
           <span className="relative mr-2.5 inline-block size-2 rounded-full bg-emerald-500">
             <span className="absolute -inset-px animate-ping [animation-duration:2s] rounded-full bg-emerald-500 opacity-75" />
           </span>
-          <span className="font-medium">Open to new opportunities</span>
+          <span className="font-medium">{t.overview.openToWork}</span>
           <span className="text-emerald-600/60 dark:text-emerald-400/60">
-            {" – Remote / Hybrid (Brussels – Liège – Namur)"}
+            {t.overview.openToWorkDetails}
           </span>
         </div>
 
@@ -69,9 +74,9 @@ export function Overview() {
             <IntroItemContent>
               <IntroItemLink
                 href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(USER.address)}`}
-                aria-label={`Location: ${USER.address}`}
+                aria-label={`Location: ${t.overview.location}`}
               >
-                Berloz, Belgium{" "}
+                {t.overview.location}{" "}
                 <Twemoji className="inline-block size-5 align-[-4px]">🇧🇪</Twemoji>
               </IntroItemLink>
             </IntroItemContent>

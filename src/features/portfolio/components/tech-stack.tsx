@@ -7,6 +7,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/base/ui/tooltip"
+import { useLocale } from "@/i18n/context"
 
 import { TECH_STACK } from "../data/tech-stack"
 import { Panel, PanelContent, PanelHeader, PanelTitle } from "./panel"
@@ -26,30 +27,27 @@ function TechItem({ tech }: { tech: (typeof TECH_STACK)[number] }) {
             >
               {tech.theme ? (
                 <>
-                  <Image
+                  <img
                     src={`/images/tech-stack-icons/${tech.key}-light.svg`}
-                    alt={`${tech.title} light icon`}
+                    alt={tech.title}
                     width={32}
                     height={32}
                     className="hidden [html.light_&]:block"
-                    unoptimized
                   />
-                  <Image
+                  <img
                     src={`/images/tech-stack-icons/${tech.key}-dark.svg`}
-                    alt={`${tech.title} dark icon`}
+                    alt={tech.title}
                     width={32}
                     height={32}
                     className="hidden [html.dark_&]:block"
-                    unoptimized
                   />
                 </>
               ) : (
-                <Image
+                <img
                   src={`/images/tech-stack-icons/${tech.key}.svg`}
-                  alt={`${tech.title} icon`}
+                  alt={tech.title}
                   width={32}
                   height={32}
-                  unoptimized
                 />
               )}
             </a>
@@ -64,13 +62,14 @@ function TechItem({ tech }: { tech: (typeof TECH_STACK)[number] }) {
 }
 
 export function TechStack() {
-  const mainStack = TECH_STACK.filter((t) => t.group === "main")
-  const alsoStack = TECH_STACK.filter((t) => t.group === "also")
+  const { t } = useLocale()
+  const mainStack = TECH_STACK.filter((tech) => tech.group === "main")
+  const alsoStack = TECH_STACK.filter((tech) => tech.group === "also")
 
   return (
     <Panel id="stack">
       <PanelHeader>
-        <PanelTitle>Main Stack</PanelTitle>
+        <PanelTitle>{t.stack.mainTitle}</PanelTitle>
       </PanelHeader>
 
       <PanelContent>
@@ -84,7 +83,7 @@ export function TechStack() {
       {alsoStack.length > 0 && (
         <>
           <PanelHeader className="screen-line-top">
-            <PanelTitle>Also worked with</PanelTitle>
+            <PanelTitle>{t.stack.alsoTitle}</PanelTitle>
           </PanelHeader>
 
           <PanelContent>

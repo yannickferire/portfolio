@@ -1,5 +1,7 @@
+"use client"
+
 import { differenceInMonths, parse } from "date-fns"
-import { BriefcaseBusinessIcon, InfinityIcon } from "lucide-react"
+import { BriefcaseBusinessIcon, InfinityIcon } from "@/components/icons"
 
 import {
   Collapsible,
@@ -9,11 +11,12 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/base/ui/collapsible"
-import { Markdown } from "@/components/markdown"
+import { MarkdownClient } from "@/components/markdown-client"
 import { Separator } from "@/components/ui/separator"
 import { Tag } from "@/components/ui/tag"
 import { ProseMono } from "@/components/ui/typography"
 import type { ExperiencePosition } from "@/features/portfolio/types/experiences"
+import { useLocale } from "@/i18n/context"
 import { cn } from "@/lib/utils"
 
 export function ExperiencePositionItem({
@@ -21,9 +24,19 @@ export function ExperiencePositionItem({
 }: {
   position: ExperiencePosition
 }) {
+  const { t } = useLocale()
   const { start, end } = position.employmentPeriod
   const isOngoing = !end
   const duration = formatDuration(start, end)
+
+  // Lookup translated title/description by position id
+  const experiencesData = t.experiencesData as Record<
+    string,
+    { title?: string; description?: string }
+  >
+  const translatedData = experiencesData[position.id] || {}
+  const title = translatedData.title || position.title
+  const description = translatedData.description || position.description
 
   return (
     <Collapsible
@@ -51,7 +64,7 @@ export function ExperiencePositionItem({
             {position.icon ?? <BriefcaseBusinessIcon />}
           </div>
 
-          <h4 className="flex-1 font-medium text-balance">{position.title}</h4>
+          <h4 className="flex-1 font-medium text-balance">{title}</h4>
 
           <div className="shrink-0 text-muted-foreground group-data-disabled:hidden [&_svg]:size-4">
             <CollapsibleChevronsIcon duration={0.15} />
@@ -62,7 +75,7 @@ export function ExperiencePositionItem({
           {position.employmentType && (
             <>
               <dl>
-                <dt className="sr-only">Employment Type</dt>
+                <dt className="sr-only">{t.experience.employmentType}</dt>
                 <dd>{position.employmentType}</dd>
               </dl>
               <Separator
@@ -73,14 +86,14 @@ export function ExperiencePositionItem({
           )}
 
           <dl>
-            <dt className="sr-only">Employment Period</dt>
+            <dt className="sr-only">{t.experience.employmentPeriod}</dt>
             <dd className="flex items-center gap-0.5 tabular-nums">
               <span>{start}</span>
               <span className="font-mono">—</span>
               {isOngoing ? (
                 <InfinityIcon
                   className="size-4.5 translate-y-[0.5px]"
-                  aria-label="Present"
+                  aria-label={t.experience.present}
                 />
               ) : (
                 <span>{end}</span>
@@ -95,7 +108,7 @@ export function ExperiencePositionItem({
                 orientation="vertical"
               />
               <dl>
-                <dt className="sr-only">Duration</dt>
+                <dt className="sr-only">{t.experience.duration}</dt>
                 <dd className="tabular-nums">{duration}</dd>
               </dl>
             </>
@@ -104,9 +117,9 @@ export function ExperiencePositionItem({
       </CollapsibleTrigger>
 
       <CollapsibleContent className="overflow-hidden">
-        {position.description && (
+        {description && (
           <ProseMono className="pt-2 pl-9">
-            <Markdown>{position.description}</Markdown>
+            <MarkdownClient>{description}</MarkdownClient>
           </ProseMono>
         )}
       </CollapsibleContent>

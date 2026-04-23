@@ -1,12 +1,17 @@
+"use client"
+
 import Image from "next/image"
 
 import { UTM_PARAMS } from "@/config/site"
+import { useLocale } from "@/i18n/context"
 import { addQueryParams } from "@/utils/url"
 
 import type { Experience } from "../../types/experiences"
 import { ExperiencePositionItem } from "./experience-position-item"
 
 export function ExperienceItem({ experience }: { experience: Experience }) {
+  const { locale, t } = useLocale()
+
   return (
     <div
       id={`experience-${experience.id}`}
@@ -64,11 +69,16 @@ export function ExperienceItem({ experience }: { experience: Experience }) {
           const years = Math.floor(months / 12)
           const remainingMonths = months % 12
 
+          const yrLabel = locale === "fr" ? "an" : "yr"
+          const yrsPluralLabel = locale === "fr" ? "ans" : "yrs"
+          const moLabel = locale === "fr" ? "mois" : "mo"
+          const mosPluralLabel = locale === "fr" ? "mois" : "mos"
+
           const duration = years > 0
             ? remainingMonths > 0
-              ? `${years} yr${years > 1 ? "s" : ""} ${remainingMonths} mo${remainingMonths > 1 ? "s" : ""}`
-              : `${years} yr${years > 1 ? "s" : ""}`
-            : `${remainingMonths} mo${remainingMonths > 1 ? "s" : ""}`
+              ? `${years} ${years > 1 ? yrsPluralLabel : yrLabel} ${remainingMonths} ${remainingMonths > 1 ? mosPluralLabel : moLabel}`
+              : `${years} ${years > 1 ? yrsPluralLabel : yrLabel}`
+            : `${remainingMonths} ${remainingMonths > 1 ? mosPluralLabel : moLabel}`
 
           return (
             <span className="text-sm text-muted-foreground">{duration}</span>
@@ -79,7 +89,7 @@ export function ExperienceItem({ experience }: { experience: Experience }) {
           <span className="relative flex items-center justify-center">
             <span className="absolute inline-flex size-3 animate-ping rounded-full bg-info opacity-50" />
             <span className="relative inline-flex size-2 rounded-full bg-info" />
-            <span className="sr-only">Current Employer</span>
+            <span className="sr-only">{t.experience.currentEmployer}</span>
           </span>
         )}
       </div>
