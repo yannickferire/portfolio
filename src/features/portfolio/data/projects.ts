@@ -49,16 +49,4 @@ export const PROJECTS: Project[] = [
     image: "/images/alpine-og.jpg",
     isExpanded: false,
   },
-  {
-    id: "jeuxdhiver",
-    title: "Jeux d'Hiver",
-    role: "Lead Front-end Developer @ Bureau347",
-    period: {
-      start: "2020",
-    },
-    link: "https://jeuxdhiver.be",
-    skills: ["Vue.js"],
-    image: "/images/jx-og.jpg",
-    isExpanded: false,
-  },
 ]

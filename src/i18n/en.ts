@@ -130,11 +130,6 @@ const en = {
       description:
         "Digital showroom for Groupe Autosphere, a Belgian dealer group with 2 Alpine concessions.",
     },
-    jeuxdhiver: {
-      role: "Lead Front-end Developer @ Bureau347",
-      description:
-        "Website for Jeux d'Hiver, one of the most iconic nightlife venues in Brussels.",
-    },
   },
 } as const
 

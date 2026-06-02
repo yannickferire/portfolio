@@ -131,11 +131,6 @@ const fr = {
       description:
         "Showroom digital pour le Groupe Autosphere, un groupe de concessionnaires belge avec 2 concessions Alpine.",
     },
-    jeuxdhiver: {
-      role: "Lead Développeur Front-end @ Bureau347",
-      description:
-        "Site pour Jeux d'Hiver, l'un des lieux de vie nocturne les plus emblématiques de Bruxelles.",
-    },
   },
 } as const
 
