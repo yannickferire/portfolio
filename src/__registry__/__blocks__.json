@@ -32,35 +32,11 @@
     ]
   },
   {
-    "name": "testimonials-01",
-    "description": "A testimonials section with dual marquees.",
-    "categories": [
-      "marketing",
-      "testimonials"
-    ]
-  },
-  {
-    "name": "testimonials-02",
-    "description": "A testimonials section with a lined layout.",
-    "categories": [
-      "marketing",
-      "testimonials"
-    ]
-  },
-  {
     "name": "experience-01",
     "description": "A work experience section with a lined layout.",
     "categories": [
       "content",
       "portfolio"
-    ]
-  },
-  {
-    "name": "team-01",
-    "description": "A team section with glowing cards.",
-    "categories": [
-      "content",
-      "team"
     ]
   }
 ]

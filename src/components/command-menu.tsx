@@ -72,12 +72,6 @@ const MENU_LINKS: CommandLinkItem[] = [
     shortcut: "GC",
   },
   {
-    title: "Blocks",
-    href: "/blocks",
-    icon: <Icons.gridView />,
-    shortcut: "GB",
-  },
-  {
     title: "Blog",
     href: "/blog",
     icon: <Icons.news />,
@@ -162,18 +156,11 @@ const OTHER_LINK_ITEMS: CommandLinkItem[] = [
   },
 ]
 
-type BlockItem = {
-  name: string
-  description: string
-}
-
 export function CommandMenu({
   docs,
-  blocks,
   enabledHotkeys = false,
 }: {
   docs: DocPreview[]
-  blocks: BlockItem[]
   enabledHotkeys?: boolean
 }) {
   const router = useRouter()
@@ -285,16 +272,6 @@ export function CommandMenu({
     [docs]
   )
 
-  const blockLinks = useMemo(
-    () =>
-      blocks.map((block) => ({
-        title: block.name,
-        href: `/blocks#${block.name}`,
-        keywords: ["block"],
-      })),
-    [blocks]
-  )
-
   return (
     <>
       <CommandMenuTrigger
@@ -331,13 +308,6 @@ export function CommandMenu({
             heading="Components"
             links={componentLinks}
             fallbackIcon={<Icons.react />}
-            onLinkSelect={handleOpenLink}
-          />
-
-          <CommandLinkGroup
-            heading="Blocks"
-            links={blockLinks}
-            fallbackIcon={<Icons.gridView />}
             onLinkSelect={handleOpenLink}
           />
 
