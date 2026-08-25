@@ -4,6 +4,8 @@ const fr = {
     home: "Accueil",
     aboutMe: "À propos",
     stack: "Stack",
+    cv: "CV",
+    clients: "Clients",
     experience: "Parcours",
     projects: "Projets",
   },
@@ -12,17 +14,17 @@ const fr = {
   profile: {
     role: "Fullstack Developer –",
     flipSentences: [
-      "Passionné par l'UI, pixel perfect",
-      "Solides connaissances UX",
-      "Vision produit",
-      "Frontend dans l'âme, fullstack quand il faut",
+      "Spécialiste de l'interface, à l'aise jusqu'à la base de données",
+      "Claude Code et serveurs MCP dans mon quotidien",
+      "Un SaaS en production, des utilisateurs payants",
+      "Approche produit, du besoin à la mise en production",
     ],
   },
 
   // Overview
   overview: {
     title: "Aperçu",
-    openToWork: "Ouvert à de nouvelles opportunités",
+    openToWork: "Disponible immédiatement",
     openToWorkDetails: " – Remote / Hybride (Bruxelles – Liège – Namur)",
     location: "Berloz, Belgique",
     phoneProtected: "[Téléphone masqué]",
@@ -32,11 +34,11 @@ const fr = {
   about: {
     title: "À propos",
     content: `
-- **Développeur Front-end Senior** avec {yearsOfExperience}+ ans d'expérience, fidèle à la même entreprise.
-- Compétent en **Next.js**, **React**, **TypeScript** et les technologies front-end modernes ; je construis des applications web de qualité, centrées sur l'utilisateur.
-- Seul développeur front-end depuis 6 ans, je gère l'ensemble de la couche UI de bout en bout, en collaboration étroite avec les designers, développeurs back-end et parties prenantes produit.
-- Un profil vraiment **polyvalent** : UI, UX, vision produit, front-end, back-end. J'ai touché à tout. Ça me donne une compréhension profonde de chaque rôle autour de la table et fait de moi un bon coéquipier.
-- Passionné par les **side projects**, des produits SaaS aux expériences créatives. Toujours en train d'explorer de nouvelles idées et technologies sur mon temps libre.
+- **Développeur Fullstack** avec {yearsOfExperience}+ ans d'expérience et une forte expertise **frontend**.
+- En agence digitale, notamment pour **Renault**, **Carrefour**, **BNP Paribas** et **Publicis** : des produits déployés sur plusieurs marchés et en plusieurs langues, avec les contraintes de marque et juridiques qui vont avec.
+- De l'**UX/UI** au **back-end** en passant par le **frontend**, je couvre toute la chaîne, avec une approche produit et un travail dirigé par les specs.
+- Le développement assisté par agents fait partie de mon quotidien : **Claude Code**, **serveurs MCP** branchés sur mes données réelles. Ça change ma vitesse de livraison, pas mes standards de code.
+- **[GROAR](https://groar.app)**, mon SaaS, a ses premiers utilisateurs payants. **Korner**, le suivant, est déjà en construction.
 
 **Au-delà du code :**<br/>
 🌿 Amoureux de la nature, je vis à la campagne en Belgique<br/>
@@ -48,6 +50,12 @@ const fr = {
   stack: {
     mainTitle: "Stack principale",
     alsoTitle: "J'ai aussi travaillé avec",
+  },
+
+  // Clients
+  clients: {
+    title: "Clients",
+    subtitle: "Marques pour lesquelles j’ai travaillé au sein de Bureau347.",
   },
 
   // Experience
@@ -88,20 +96,29 @@ const fr = {
   // Experiences data (keyed by position id)
   experiencesData: {
     lead: {
-      title: "Lead Développeur Front-end",
-      description:
-        "Seul développeur front-end, en charge de toute la couche UI. Collaboration avec les designers, développeurs back-end et parties prenantes produit sur un large éventail de projets.",
+      title: "Développeur Senior • Front-end, UI/UX, Back-end",
+      description: `Responsable de l'architecture et des choix technologiques front-end, avec plusieurs casquettes au fil des années : UI, UX, back-end, mise en production. Un poste qui m'a habitué à travailler avec les designers, les développeurs back-end et les clients.
+
+Quelques réalisations, parmi d'autres :
+
+- **Offres Renault Belux**, douze ans de développement continu : un produit vivant, en FR et NL, pour la Belgique et le Luxembourg, qui a traversé plusieurs changements de stack et d'obligations légales sans jamais repartir de zéro.
+- **CMS sur mesure** pour ce site, qui rend le client autonome sur l'encodage et la publication de ses offres.
+- Autres produits **Renault** et **Dacia** (pneus, outlet, stock, programme Privilège), déployés sur bien plus de pays et de langues.
+- Sites et emailings pour **Renault Brussels** (20 000 destinataires, FR et NL) et site du concessionnaire **Alpine** du Groupe Autosphere.
+- **CRM RH** sur Notion, automatisé avec Make, pour **Derains & Gharavi**.
+- **Jeux d'hiver** : site vitrine en Vue.js, site événementiel des 30 ans, emailings à 15 000 destinataires.`,
     },
     frontend: {
       title: "Développeur Front-end",
+      description:
+        "Deuxième développeur front-end de l'équipe, sur les sites et applications des clients de l'agence.",
     },
     freelance: {
-      title: "Développeur Front-end",
-      description:
-        "Développement front-end en freelance pour divers clients.",
+      title: "Développeur",
+      description: "Développement web en freelance pour divers clients.",
     },
     celluleVerte: {
-      title: "Développeur Front-end (Stage)",
+      title: "Développeur (Stage)",
     },
     education: {
       title: "Haute École Albert Jacquard",
@@ -122,12 +139,12 @@ const fr = {
         "Un compagnon basé sur les données pour les joueurs de TFT. De vraies probabilités pour prendre de meilleures décisions en jeu.",
     },
     offresRenault: {
-      role: "Lead Développeur Front-end @ Bureau347",
+      role: "Développeur Senior @ Bureau347",
       description:
         "Le site des offres Renault pour la Belgique et le Luxembourg. 12 ans de développement continu, avec un CMS sur mesure en Svelte & Laravel.",
     },
     alpine: {
-      role: "Lead Développeur Front-end @ Bureau347",
+      role: "Développeur Senior @ Bureau347",
       description:
         "Showroom digital pour le Groupe Autosphere, un groupe de concessionnaires belge avec 2 concessions Alpine.",
     },

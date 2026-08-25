@@ -10,6 +10,7 @@ import {
   MapPinIcon,
   PhoneIcon,
 } from "@/components/icons"
+import { MarkdownClient } from "@/components/markdown-client"
 import { EXPERIENCES } from "@/features/portfolio/data/experiences"
 import { TECH_STACK } from "@/features/portfolio/data/tech-stack"
 import { USER } from "@/features/portfolio/data/user"
@@ -29,8 +30,6 @@ export default function CVPage() {
     { title?: string; description?: string }
   >
 
-  const mainStack = TECH_STACK.filter((s) => s.group === "main")
-  const alsoStack = TECH_STACK.filter((s) => s.group === "also")
 
   return (
     <>
@@ -73,9 +72,13 @@ export default function CVPage() {
                     Fullstack Developer
                   </p>
                   <p className="font-pixel-square text-xs text-zinc-500">
-                    {t.profile.flipSentences.slice(0, -1).join(" – ")}
+                    {locale === "fr"
+                      ? "Forte expertise frontend"
+                      : "Deep frontend expertise"}
                     <br />
-                    {t.profile.flipSentences[t.profile.flipSentences.length - 1]}
+                    {locale === "fr"
+                      ? "Approche produit, du besoin à la mise en production"
+                      : "Product-minded, from the need to production"}
                   </p>
                 </div>
               </div>
@@ -129,33 +132,50 @@ export default function CVPage() {
                 {locale === "fr" ? (
                   <>
                     <p>
-                      <strong>Développeur front-end depuis {yearsOfExperience}+ ans</strong>, fidèle à la même entreprise.
+                      <strong>Développeur fullstack</strong> avec {yearsOfExperience}+ ans
+                      d&apos;expérience et une forte expertise <strong>frontend</strong>,
+                      dont douze ans en agence digitale à livrer pour{" "}
+                      <strong>Renault</strong>, <strong>Carrefour</strong>,{" "}
+                      <strong>BNP Paribas</strong> et <strong>Publicis</strong>.
                     </p>
                     <p>
-                      <strong>Seul front-end developer depuis 6 ans</strong>, en charge de toute la couche UI de bout en bout.
+                      Des produits multi-marchés et multilingues, avec les contraintes de
+                      marque et juridiques qui vont avec.
                     </p>
                     <p>
-                      Profil <strong>polyvalent</strong> : UI, UX, vision produit, front-end, back-end.
-                      J'ai touché à tout, ce qui me donne une compréhension profonde de chaque rôle.
+                      De l&apos;<strong>UX/UI</strong> au <strong>back-end</strong>, je couvre
+                      toute la chaîne, avec une approche produit et un travail dirigé
+                      par les specs.
                     </p>
                     <p>
-                      Passionné par les <strong>side projects</strong> et les nouvelles technologies.
+                      Je travaille au quotidien avec <strong>Claude Code</strong> et des
+                      serveurs <strong>MCP</strong>, ce qui me permet de concevoir et livrer
+                      des produits seul : <strong>GROAR</strong>, mon SaaS, a ses premiers
+                      utilisateurs payants.
                     </p>
                   </>
                 ) : (
                   <>
                     <p>
-                      <strong>Front-end developer for {yearsOfExperience}+ years</strong>, dedicated to the same company.
+                      <strong>Fullstack developer</strong> with {yearsOfExperience}+ years
+                      of experience and deep <strong>frontend</strong> expertise, twelve of
+                      them in a digital agency delivering for <strong>Renault</strong>,{" "}
+                      <strong>Carrefour</strong>, <strong>BNP Paribas</strong> and{" "}
+                      <strong>Publicis</strong>.
                     </p>
                     <p>
-                      <strong>Sole front-end developer for the past 6 years</strong>, owning the full UI layer end-to-end.
+                      Products shipped across several markets and languages, with the brand
+                      and legal constraints that come with them.
                     </p>
                     <p>
-                      A truly <strong>versatile profile</strong>: UI, UX, product thinking, front-end, back-end.
-                      I've touched it all, giving me a deep understanding of every role.
+                      From <strong>UX/UI</strong> to <strong>frontend</strong> to{" "}
+                      <strong>back-end</strong>, I cover the whole chain, with a product
+                      mindset and a spec-driven way of working.
                     </p>
                     <p>
-                      Passionate about <strong>side projects</strong> and new technologies.
+                      I work daily with <strong>Claude Code</strong> and{" "}
+                      <strong>MCP servers</strong>, which is how I design and ship products
+                      solo: <strong>GROAR</strong>, my SaaS, has its first paying users.
                     </p>
                   </>
                 )}
@@ -166,8 +186,12 @@ export default function CVPage() {
             <section>
               <SectionTitle>{t.experience.title}</SectionTitle>
               <div className="space-y-3.5">
+                {/* Le CV omet les stages : trop anciens et trop courts pour un
+                    profil senior. Le portfolio garde l'historique complet. */}
                 {EXPERIENCES.map((exp) =>
-                  exp.positions.map((pos) => {
+                  exp.positions
+                    .filter((pos) => pos.employmentType !== "Internship")
+                    .map((pos) => {
                     const translated = experiencesData[pos.id] || {}
                     const title = translated.title || pos.title
                     const description =
@@ -202,7 +226,13 @@ export default function CVPage() {
                           </span>
                         </div>
                         {description && (
-                          <p className="mt-1 text-zinc-600">{description}</p>
+                          <div className="cv-md mt-1 text-zinc-600">
+                            {/* Le CV résume : intro + 4 puces max. Le portfolio
+                                affiche la liste complète depuis la même source. */}
+                            <MarkdownClient>
+                              {trimForCv(description, 3)}
+                            </MarkdownClient>
+                          </div>
                         )}
                       </div>
                       </div>
@@ -212,58 +242,6 @@ export default function CVPage() {
               </div>
             </section>
 
-            {/* Stack */}
-            <section>
-              <SectionTitle>Stack</SectionTitle>
-              <div className="flex flex-wrap gap-2">
-                {mainStack.map((tech) => (
-                  <div
-                    key={tech.key}
-                    className="flex items-center gap-1.5 rounded-md bg-zinc-50 px-2 py-1"
-                  >
-                    <Image
-                      src={`/images/tech-stack-icons/${tech.theme ? `${tech.key}-light` : tech.key}.svg`}
-                      alt={tech.title}
-                      width={14}
-                      height={14}
-                      className="size-3.5"
-                      unoptimized
-                    />
-                    <span className="text-[11px] font-medium text-zinc-600">
-                      {tech.title}
-                    </span>
-                  </div>
-                ))}
-              </div>
-
-              {alsoStack.length > 0 && (
-                <>
-                  <h3 className="mt-3 mb-1.5 text-[11px] font-medium text-zinc-400">
-                    {t.stack.alsoTitle}
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {alsoStack.map((tech) => (
-                      <div
-                        key={tech.key}
-                        className="flex items-center gap-1.5 rounded-md bg-zinc-50/50 px-2 py-1"
-                      >
-                        <Image
-                          src={`/images/tech-stack-icons/${tech.theme ? `${tech.key}-light` : tech.key}.svg`}
-                          alt={tech.title}
-                          width={14}
-                          height={14}
-                          className="size-3.5 opacity-50"
-                          unoptimized
-                        />
-                        <span className="text-[11px] font-medium text-zinc-400">
-                          {tech.title}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </>
-              )}
-            </section>
           </div>
 
           {/* ─── RIGHT: Sidebar ─── */}
@@ -275,6 +253,33 @@ export default function CVPage() {
                 <SidebarLink icon="/images/github.svg" text="yannickferire" />
                 <SidebarLink icon="/images/linkedin.svg" text="yannick-ferire" />
                 <SidebarLink icon="/images/x.svg" text="@yannick_ferire" />
+              </div>
+            </section>
+
+            {/* Stack — groupé par fonction : un ATS et un recruteur cherchent
+                des mots-clés par famille, pas une grille de logos. */}
+            <section>
+              <SmallTitle>Stack</SmallTitle>
+              <div className="space-y-1.5">
+                {(
+                  [
+                    ["frontend", locale === "fr" ? "Front-end" : "Front-end"],
+                    ["backend", locale === "fr" ? "Back-end" : "Back-end"],
+                    ["tools", locale === "fr" ? "Outils" : "Tools"],
+                    ["design", "Design"],
+                  ] as const
+                ).map(([family, label]) => {
+                  const items = TECH_STACK.filter((s) => s.family === family)
+                  if (items.length === 0) return null
+                  return (
+                    <p key={family} className="text-[10px] leading-snug">
+                      <span className="font-semibold text-zinc-700">{label} : </span>
+                      <span className="text-zinc-500">
+                        {items.map((s) => s.title).join(", ")}
+                      </span>
+                    </p>
+                  )
+                })}
               </div>
             </section>
 
@@ -306,7 +311,11 @@ export default function CVPage() {
               <SmallTitle>{locale === "fr" ? "Intérêts" : "Interests"}</SmallTitle>
               <ul className="space-y-0.5">
                 <li>Nature</li>
-                <li>Padel, Football, Cycling</li>
+                <li>
+                  {locale === "fr"
+                    ? "Padel, football, vélo"
+                    : "Padel, football, cycling"}
+                </li>
                 <li>Tech</li>
               </ul>
             </section>
@@ -325,6 +334,22 @@ export default function CVPage() {
 
       {/* Print styles */}
       <style jsx global>{`
+        .cv-md p {
+          margin: 0 0 0.35rem;
+        }
+        .cv-md ul {
+          margin: 0.25rem 0 0;
+          padding-left: 0.9rem;
+          list-style: disc;
+        }
+        .cv-md li {
+          margin-bottom: 0.15rem;
+        }
+        .cv-md strong {
+          font-weight: 600;
+          color: var(--color-zinc-900, #18181b);
+        }
+
         @media print {
           @page {
             size: A4;
@@ -342,8 +367,6 @@ export default function CVPage() {
           .cv-page {
             width: 210mm;
             min-height: 297mm;
-            max-height: 297mm;
-            overflow: hidden;
           }
         }
 
@@ -356,6 +379,22 @@ export default function CVPage() {
       `}</style>
     </>
   )
+}
+
+
+/** Garde l'intro et les `max` premières puces d'une description Markdown. */
+function trimForCv(markdown: string, max: number) {
+  const lines = markdown.split("\n")
+  let bullets = 0
+  const kept: string[] = []
+  for (const line of lines) {
+    if (line.trimStart().startsWith("- ")) {
+      bullets += 1
+      if (bullets > max) break
+    }
+    kept.push(line)
+  }
+  return kept.join("\n").trimEnd()
 }
 
 function SectionTitle({ children }: { children: React.ReactNode }) {

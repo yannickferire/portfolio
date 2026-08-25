@@ -23,9 +23,11 @@ export function SiteHeader() {
 
   const mainNav: NavItem[] = [
     { title: t.nav.aboutMe, href: `/${locale}#about` },
-    { title: t.nav.stack, href: `/${locale}#stack` },
+    { title: t.nav.clients, href: `/${locale}#clients` },
     { title: t.nav.experience, href: `/${locale}#experience` },
     { title: t.nav.projects, href: `/${locale}#projects` },
+    { title: t.nav.stack, href: `/${locale}#stack` },
+    { title: t.nav.cv, href: `/${locale}/cv` },
   ]
 
   const mobileNav: NavItem[] = [

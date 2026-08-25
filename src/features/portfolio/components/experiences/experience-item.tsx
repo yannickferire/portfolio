@@ -51,17 +51,23 @@ export function ExperienceItem({ experience }: { experience: Experience }) {
         </h3>
 
         {experience.positions.length > 1 && (() => {
-          const starts = experience.positions.map((p) => p.employmentPeriod.start)
-          const ends = experience.positions.map((p) => p.employmentPeriod.end)
-          const earliest = starts.sort()[0]
-          const hasOngoing = ends.some((e) => !e)
-          const latest = hasOngoing ? null : ends.filter(Boolean).sort().reverse()[0]
-
           const parseDate = (d: string) => {
             const parts = d.split(".")
             if (parts.length === 2) return new Date(Number(parts[1]), Number(parts[0]) - 1)
             return new Date(Number(parts[0]), 0)
           }
+
+          const starts = experience.positions.map((p) => p.employmentPeriod.start)
+          const ends = experience.positions.map((p) => p.employmentPeriod.end)
+          const hasOngoing = ends.some((e) => !e)
+
+          // Trier sur les dates parsées : "MM.YYYY" comparé en chaîne classe par mois.
+          const byDate = (a: string, b: string) =>
+            parseDate(a).getTime() - parseDate(b).getTime()
+          const earliest = [...starts].sort(byDate)[0]
+          const latest = hasOngoing
+            ? null
+            : [...ends.filter((e): e is string => Boolean(e))].sort(byDate).reverse()[0]
 
           const startDate = parseDate(earliest)
           const endDate = latest ? parseDate(latest) : new Date()
@@ -99,6 +105,7 @@ export function ExperienceItem({ experience }: { experience: Experience }) {
           <ExperiencePositionItem key={position.id} position={position} />
         ))}
       </div>
+
     </div>
   )
 }

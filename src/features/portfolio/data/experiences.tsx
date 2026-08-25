@@ -10,24 +10,27 @@ export const EXPERIENCES: Experience[] = [
     positions: [
       {
         id: "lead",
-        title: "Lead Front-end Developer",
+        title: "Senior Developer • Front-end, UI/UX, Back-end",
         employmentPeriod: {
           start: "09.2018",
+          end: "08.2026",
         },
         employmentType: "Full-time",
         icon: <CodeXmlIcon />,
-        description:
-          "Sole front-end developer, owning the full UI layer. Collaborating with designers, back-end engineers, and product stakeholders across a wide range of projects.",
+        description: "Owned the front-end architecture and tech choices.",
+        isExpanded: true,
         skills: [
           "TypeScript",
           "React",
           "Next.js",
+          "Laravel",
           "Tailwind CSS",
           "Vue.js",
+          "Notion",
+          "Make",
           "UI/UX",
           "Product",
         ],
-        isExpanded: true,
       },
       {
         id: "frontend",
@@ -41,7 +44,6 @@ export const EXPERIENCES: Experience[] = [
         skills: ["JavaScript", "HTML", "CSS", "jQuery", "PHP", "Laravel"],
       },
     ],
-    isCurrentEmployer: true,
   },
   {
     id: "freelance",
@@ -49,7 +51,7 @@ export const EXPERIENCES: Experience[] = [
     positions: [
       {
         id: "freelance",
-        title: "Front-end Developer",
+        title: "Developer",
         employmentPeriod: {
           start: "09.2013",
           end: "04.2014",
@@ -67,7 +69,7 @@ export const EXPERIENCES: Experience[] = [
     positions: [
       {
         id: "celluleVerte",
-        title: "Front-end Developer (Internship)",
+        title: "Developer (Internship)",
         employmentPeriod: {
           start: "10.2012",
           end: "01.2013",

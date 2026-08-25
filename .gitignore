@@ -31,3 +31,10 @@ pnpm-debug.log*
 
 # vercel
 .vercel
+
+# TypeScript incremental build cache
+tsconfig.tsbuildinfo
+
+# CV Sarah — données personnelles, hors dépôt
+/public/sarah
+/src/app/**/cv/sarah

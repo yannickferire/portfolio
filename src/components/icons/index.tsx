@@ -1,4 +1,3 @@
-import { HugeiconsIcon } from "@hugeicons/react"
 import {
   ArrowDown01Icon as ArrowDown01,
   ArrowRight01Icon as ArrowRight01,
@@ -8,8 +7,9 @@ import {
   BulbIcon as Bulb,
   Call02Icon as Call02,
   Cancel01Icon as Cancel01,
-  LanguageSquareIcon as LanguageSquare,
+  Car01Icon as Car01,
   InfinityIcon as Infinity,
+  LanguageSquareIcon as LanguageSquare,
   Link01Icon as Link01,
   Location01Icon as Location01,
   Mail01Icon as Mail01,
@@ -17,6 +17,7 @@ import {
   Package01Icon as Package01,
   SourceCodeIcon as SourceCode,
 } from "@hugeicons/core-free-icons"
+import { HugeiconsIcon } from "@hugeicons/react"
 
 function createIcon(iconData: typeof ArrowRight01, displayName: string) {
   const Icon = ({ size = 18, ...props }: Omit<React.ComponentProps<typeof HugeiconsIcon>, "icon">) => (
@@ -32,6 +33,7 @@ export const ArrowUpRightIcon = createIcon(ArrowUpRight01, "ArrowUpRightIcon")
 export const BoxIcon = createIcon(Package01, "BoxIcon")
 export const BriefcaseBusinessIcon = createIcon(Briefcase01, "BriefcaseBusinessIcon")
 export const BulbIcon = createIcon(Bulb, "BulbIcon")
+export const CarIcon = createIcon(Car01, "CarIcon")
 export const ChevronDownIcon = createIcon(ArrowDown01, "ChevronDownIcon")
 export const CodeXmlIcon = createIcon(SourceCode, "CodeXmlIcon")
 export const GlobeIcon = createIcon(LanguageSquare, "GlobeIcon")
@@ -47,8 +49,8 @@ export const XIcon = createIcon(Cancel01, "XIcon")
 // Re-export legacy icons from brand-icons for backward compatibility
 export {
   ComponentIcon,
-  Icons,
   getIcon,
   getIconForLanguageExtension,
   getIconForPackageManager,
+  Icons,
 } from "@/components/brand-icons"

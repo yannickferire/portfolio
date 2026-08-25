@@ -59,11 +59,10 @@ export function ProjectItem({
             <Image
               src={project.image}
               alt={project.title}
-              width={120}
-              height={120}
-              quality={100}
+              width={384}
+              height={202}
+              sizes="192px"
               className="aspect-[1200/630] w-48 object-cover select-none"
-              unoptimized
             />
           </a>
         ) : project.logo ? (

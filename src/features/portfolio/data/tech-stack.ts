@@ -4,6 +4,7 @@ export const TECH_STACK: TechStack[] = [
   // Main stack
   {
     key: "nextjs2",
+    family: "frontend",
     title: "Next.js",
     href: "https://nextjs.org/",
     categories: ["Framework"],
@@ -12,13 +13,23 @@ export const TECH_STACK: TechStack[] = [
   },
   {
     key: "typescript",
+    family: "frontend",
     title: "TypeScript",
     href: "https://www.typescriptlang.org/",
     categories: ["Language"],
     group: "main",
   },
   {
+    key: "js",
+    title: "JavaScript",
+    family: "frontend",
+    href: "https://developer.mozilla.org/docs/Web/JavaScript",
+    categories: ["Language"],
+    group: "main",
+  },
+  {
     key: "react",
+    family: "frontend",
     title: "React",
     href: "https://react.dev/",
     categories: ["Library", "UI Library"],
@@ -26,6 +37,7 @@ export const TECH_STACK: TechStack[] = [
   },
   {
     key: "tailwindcss",
+    family: "frontend",
     title: "Tailwind CSS",
     href: "https://tailwindcss.com/",
     categories: ["Framework"],
@@ -33,6 +45,7 @@ export const TECH_STACK: TechStack[] = [
   },
   {
     key: "shadcn-ui",
+    family: "frontend",
     title: "shadcn/ui",
     href: "https://ui.shadcn.com/",
     categories: ["Library", "Component Library"],
@@ -41,6 +54,7 @@ export const TECH_STACK: TechStack[] = [
   },
   {
     key: "motion",
+    family: "frontend",
     title: "Motion",
     href: "https://motion.dev/",
     categories: ["Library", "Animation"],
@@ -48,6 +62,7 @@ export const TECH_STACK: TechStack[] = [
   },
   {
     key: "supabase",
+    family: "backend",
     title: "Supabase",
     href: "https://supabase.com/",
     categories: ["Backend", "Database"],
@@ -55,6 +70,7 @@ export const TECH_STACK: TechStack[] = [
   },
   {
     key: "betterauth",
+    family: "backend",
     title: "BetterAuth",
     href: "https://www.better-auth.com/",
     categories: ["Library", "Auth"],
@@ -63,6 +79,7 @@ export const TECH_STACK: TechStack[] = [
   },
   {
     key: "git",
+    family: "tools",
     title: "Git",
     href: "https://git-scm.com/",
     categories: ["Version Control"],
@@ -70,6 +87,7 @@ export const TECH_STACK: TechStack[] = [
   },
   {
     key: "posthog",
+    family: "tools",
     title: "PostHog",
     href: "https://posthog.com/",
     categories: ["Tools", "Analytics"],
@@ -77,6 +95,7 @@ export const TECH_STACK: TechStack[] = [
   },
   {
     key: "sentry",
+    family: "tools",
     title: "Sentry",
     href: "https://sentry.io/",
     categories: ["Tools", "Monitoring"],
@@ -84,6 +103,7 @@ export const TECH_STACK: TechStack[] = [
   },
   {
     key: "resend",
+    family: "tools",
     title: "Resend",
     href: "https://resend.com/",
     categories: ["Tools", "Email"],
@@ -92,6 +112,7 @@ export const TECH_STACK: TechStack[] = [
   },
   {
     key: "claude",
+    family: "tools",
     title: "Claude Code",
     href: "https://claude.ai/",
     categories: ["Tools", "AI"],
@@ -99,6 +120,7 @@ export const TECH_STACK: TechStack[] = [
   },
   {
     key: "vscode",
+    family: "tools",
     title: "VS Code",
     href: "https://code.visualstudio.com/",
     categories: ["Tools", "IDE"],
@@ -106,15 +128,9 @@ export const TECH_STACK: TechStack[] = [
   },
   {
     key: "figma",
+    family: "design",
     title: "Figma",
     href: "https://www.figma.com/",
-    categories: ["Tools", "Design"],
-    group: "main",
-  },
-  {
-    key: "ps",
-    title: "Adobe Photoshop",
-    href: "https://www.adobe.com/products/photoshop.html",
     categories: ["Tools", "Design"],
     group: "main",
   },
@@ -122,6 +138,7 @@ export const TECH_STACK: TechStack[] = [
   // Also worked with
   {
     key: "laravel",
+    family: "backend",
     title: "Laravel",
     href: "https://laravel.com/",
     categories: ["Framework"],
@@ -129,6 +146,7 @@ export const TECH_STACK: TechStack[] = [
   },
   {
     key: "vuejs",
+    family: "frontend",
     title: "Vue.js",
     href: "https://vuejs.org/",
     categories: ["Framework"],
@@ -136,6 +154,7 @@ export const TECH_STACK: TechStack[] = [
   },
   {
     key: "svelte",
+    family: "frontend",
     title: "Svelte",
     href: "https://svelte.dev/",
     categories: ["Framework"],
@@ -143,6 +162,7 @@ export const TECH_STACK: TechStack[] = [
   },
   {
     key: "mysql",
+    family: "backend",
     title: "MySQL",
     href: "https://www.mysql.com/",
     categories: ["Database"],
@@ -150,10 +170,19 @@ export const TECH_STACK: TechStack[] = [
   },
   {
     key: "cursor",
+    family: "tools",
     title: "Cursor",
     href: "https://cursor.com/",
     categories: ["Tools", "AI"],
     theme: true,
+    group: "also",
+  },
+  {
+    key: "ps",
+    family: "design",
+    title: "Adobe Photoshop",
+    href: "https://www.adobe.com/products/photoshop.html",
+    categories: ["Tools", "Design"],
     group: "also",
   },
 ]

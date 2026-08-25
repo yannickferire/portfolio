@@ -28,7 +28,7 @@ export const PROJECTS: Project[] = [
   {
     id: "offresRenault",
     title: "Offres Renault Belgium",
-    role: "Lead Front-end Developer @ Bureau347",
+    role: "Senior Developer @ Bureau347",
     period: {
       start: "2014",
     },
@@ -40,7 +40,7 @@ export const PROJECTS: Project[] = [
   {
     id: "alpine",
     title: "Alpine Groupe Autosphere",
-    role: "Lead Front-end Developer @ Bureau347",
+    role: "Senior Developer @ Bureau347",
     period: {
       start: "2023",
     },
