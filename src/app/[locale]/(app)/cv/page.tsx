@@ -168,9 +168,9 @@ export default function CVPage() {
                       and legal constraints that come with them.
                     </p>
                     <p>
-                      From <strong>UX/UI</strong> to <strong>frontend</strong> to{" "}
-                      <strong>back-end</strong>, I cover the whole chain, with a product
-                      mindset and a spec-driven way of working.
+                      From <strong>UX/UI</strong> to <strong>back-end</strong>, I cover
+                      the whole chain, with a product mindset and a spec-driven way of
+                      working.
                     </p>
                     <p>
                       I work daily with <strong>Claude Code</strong> and{" "}
@@ -186,12 +186,16 @@ export default function CVPage() {
             <section>
               <SectionTitle>{t.experience.title}</SectionTitle>
               <div className="space-y-3.5">
-                {/* Le CV omet les stages : trop anciens et trop courts pour un
-                    profil senior. Le portfolio garde l'historique complet. */}
-                {EXPERIENCES.map((exp) =>
-                  exp.positions
-                    .filter((pos) => pos.employmentType !== "Internship")
-                    .map((pos) => {
+                {/* Le CV omet les stages et fusionne les postes d'une même
+                    entreprise : intitulé du plus récent, période couvrant tout.
+                    Le portfolio garde l'historique détaillé. */}
+                {EXPERIENCES.map((exp) => {
+                  const kept = exp.positions.filter(
+                    (pos) => pos.employmentType !== "Internship"
+                  )
+                  if (kept.length === 0) return null
+                  return [kept[0]].map((pos) => {
+                    const oldest = kept[kept.length - 1]
                     const translated = experiencesData[pos.id] || {}
                     const title = translated.title || pos.title
                     const description =
@@ -219,7 +223,7 @@ export default function CVPage() {
                             </p>
                           </div>
                           <span className="shrink-0 text-[11px] tabular-nums text-zinc-400">
-                            {pos.employmentPeriod.start} –{" "}
+                            {oldest.employmentPeriod.start} –{" "}
                             {isOngoing
                               ? locale === "fr" ? "Auj." : "Present"
                               : pos.employmentPeriod.end}
@@ -230,7 +234,7 @@ export default function CVPage() {
                             {/* Le CV résume : intro + 4 puces max. Le portfolio
                                 affiche la liste complète depuis la même source. */}
                             <MarkdownClient>
-                              {trimForCv(description, 3)}
+                              {trimForCv(description, 6)}
                             </MarkdownClient>
                           </div>
                         )}
@@ -238,7 +242,7 @@ export default function CVPage() {
                       </div>
                     )
                   })
-                )}
+                })}
               </div>
             </section>
 

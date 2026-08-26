@@ -104,9 +104,9 @@ Quelques réalisations, parmi d'autres :
 - **Offres Renault Belux**, douze ans de développement continu : un produit vivant, en FR et NL, pour la Belgique et le Luxembourg, qui a traversé plusieurs changements de stack et d'obligations légales sans jamais repartir de zéro.
 - **CMS sur mesure** pour ce site, qui rend le client autonome sur l'encodage et la publication de ses offres.
 - Autres produits **Renault** et **Dacia** (pneus, outlet, stock, programme Privilège), déployés sur bien plus de pays et de langues.
-- Sites et emailings pour **Renault Brussels** (20 000 destinataires, FR et NL) et site du concessionnaire **Alpine** du Groupe Autosphere.
+- Sites et emailings pour **Renault Brussels** (20 000 destinataires, FR et NL) et site du concessionnaire **Alpine** du Groupe Autosphere.
 - **CRM RH** sur Notion, automatisé avec Make, pour **Derains & Gharavi**.
-- **Jeux d'hiver** : site vitrine en Vue.js, site événementiel des 30 ans, emailings à 15 000 destinataires.`,
+- **Jeux d'hiver** : site vitrine en Vue.js, site événementiel des 30 ans, emailings à 15 000 destinataires.`,
     },
     frontend: {
       title: "Développeur Front-end",
